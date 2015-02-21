@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-	// playSound("#theme-sound");	
+	playSound("#theme-sound");	
 
 
  $('.ryu').mouseenter(function() {
