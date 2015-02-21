@@ -1,3 +1,9 @@
+@font-face{
+  font-family: comical;
+  src: url('../fonts/animeace2_reg.otf');
+}
+
+
 body {
 	background-color: black;
 }
@@ -5,7 +11,7 @@ body {
 .main {
   background-color: white;
   margin-top: 110px;
-  padding-left: 100px;
+  padding-left: 50px;
   min-width: 1200px;
   height: 500px;
   position: relative;
@@ -15,7 +21,7 @@ body {
 .ryu {
 	float: left;
 	width: 659px;
-    height: 494px;
+  height: 494px;
 }
 
 .ryu-ready, .ryu-still, .ryu-throwing, .ryu-cool {
@@ -57,4 +63,24 @@ body {
   z-index: 10;
   top: 170px;
   left: 650px;
+}
+
+
+.instructions {
+  font-family: comical;
+  font-size: 1.6em;
+  line-height: 1.5;
+  float:left;
+  width: 600px;
+  margin-top: 4em;
+  margin-left: -100px;
+}
+
+.instructions p:first-child {
+  margin-right: 310px;
+}
+
+.instructions p:last-child {
+  margin-top: 0.5em;
+  margin-left: 310px;
 }
