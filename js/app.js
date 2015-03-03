@@ -3,77 +3,85 @@ $(document).ready(function() {
 	playSound("#theme-sound");	
 
 
- $('.ryu').mouseenter(function() {
+	 $('.ryu').mouseenter(function() {
 
-	$('.ryu-still').hide();
-	$('.ryu-ready').show();
+		hideAllRyuStates();
+		$('.ryu-ready').show();
 
-  })
+	  })
 
- .mouseleave(function() {
+	 .mouseleave(function() {
 
-	$('.ryu-ready').hide();
-	$('.ryu-still').show();  
-})
+		hideAllRyuStates();
+		$('.ryu-still').show();  
 
-.mousedown(function() {
+	})
 
-	playSound("#hadouken-sound");
+	.mousedown(function() {
 
-	$('.ryu-ready').hide();
-	$('.ryu-throwing').show();
+		playSound("#hadouken-sound");
 
-	// Show, animate, and hide hadouken:
+		hideAllRyuStates();
+		$('.ryu-throwing').show();
 
-$('.hadouken').finish().show().animate(
-  {'left': '1150px'},
-  500,
-  function() {   // this is the callback function
-    $(this).hide();
-    $(this).css('left', '650px');   // reset to original left
-  }
-);
-  })
+		// Show, animate, and hide hadouken:
 
- .mouseup(function() {
+		$('.hadouken').finish().show().animate(
+		  {'left': '1150px'},
+		  500,
+		  function() {   // this is the callback function
+		    $(this).hide();
+		    $(this).css('left', '650px');   // reset to original left
+		  }
+		);
 
-	$('.ryu-throwing').hide();
-	$('.ryu-ready').show();  
+	  })
 
-});
+	 .mouseup(function() {
 
+		hideAllRyuStates();
+		$('.ryu-ready').show();  
 
-
-$(document).keydown(function(event) {
-
-	if ( event.which == 88 )
-	{
-		// console.log('x was pressed');
-		$('.ryu-still').hide();
-		$('.ryu-ready').hide();
-		$('.ryu-throwing').hide();
-		$('.ryu-cool').show();  
-
-		pauseSound("#theme-sound");	
-		playSound("#cool-sound");
-
-	}
+	});
 
 
-})
 
-.keyup(function() {
-		$('.ryu-ready').hide();
-		$('.ryu-throwing').hide();
-		$('.ryu-cool').hide();  
+	$(document).keydown(function(event) {
+
+		if ( event.which == 88 )
+		{
+			// console.log('x was pressed');
+			hideAllRyuStates();
+			$('.ryu-cool').show();  
+
+			pauseSound("#theme-sound");	
+			playSound("#cool-sound");
+
+		}
+
+
+	})
+
+	.keyup(function() {
+
+		hideAllRyuStates();
 		$('.ryu-still').show();
 
 		pauseSound("#cool-sound");	
 
-});
+	});
 
 
 });
+
+
+function hideAllRyuStates()
+{
+	$('.ryu-ready').hide();
+	$('.ryu-throwing').hide();
+	$('.ryu-cool').hide();  
+	$('.ryu-still').hide();
+}
 
 
 function playSound(pAudioSelector) {
@@ -82,8 +90,6 @@ function playSound(pAudioSelector) {
   	// audioElem.load();
   	audioElem.play();
 }
-
-
 
 
 function pauseSound(pAudioSelector) {
